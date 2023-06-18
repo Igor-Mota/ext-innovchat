@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Minha Extensão",
+  "version": "1.0",
+  "description": "Descrição da minha extensão",
+  "minimum_chrome_version": "93",
+
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "vite.svg",
+      "48": "vite.svg",
+      "128": "vite.svg"
+    }
+  },
+  "icons": {
+    "16": "vite.svg",
+    "48": "vite.svg",
+    "128": "vite.svg"
+  },
+  "background": {
+    "service_worker": "background.mjs",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["main.mjs"],
+      "type": "module"
+    }
+  ],
+
+  "host_permissions": ["https://web.whatsapp.com/*"],
+  "permissions": ["activeTab", "scripting"],
+  "web_accessible_resources": [
+    {
+      "resources": ["*.js", "*.mjs", "*.cjs"],
+      "matches": ["https://web.whatsapp.com/*"]
+    }
+  ]
+}
