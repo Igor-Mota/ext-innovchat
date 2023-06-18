@@ -1,9 +1,11 @@
-FROM ubuntu:latest
+FROM node:16
 
-RUN apt-get update && apt-get install -y python3
+WORKDIR /www/ext-innovchat
 
-WORKDIR /app
+COPY package*.json ./
 
-COPY . /app
+RUN yarn
+
+COPY . .
 
 CMD ["yarn", "dev"]
